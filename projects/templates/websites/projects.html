@@ -1,1 +1,35 @@
+{% extends 'main.html' %} {% block content %}
 <h1>Projects</h1>
+
+<h1>Name: {{name}}</h1>
+
+<!-- {% if age > 22 %}
+<h4>Older than 22</h4>
+{% elif age == 23 %}
+<h4>It 22</h4>
+{% else %}
+<h4>Under 22</h4>
+{% endif %} -->
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Prices</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in projects %}
+        <tr>
+            <td>{{item.idProduct}}</td>
+            <td>{{item.nameProduct}}</td>
+            <td>{{item.infoProduct}}</td>
+            <td>{{item.pricesProduct}}</td>
+            <td>{% if item.state %} <strong>Có hàng</strong>{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
