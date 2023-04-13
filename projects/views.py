@@ -20,14 +20,14 @@ projectItem = [
     },
     {
         'idProduct': '3',
-        'nameProduct': "Product 2",
+        'nameProduct': "Product 3",
         'infoProduct': "Info for Items 3",
         'pricesProduct': "24.56",
         'state': True
     },
     {
         'idProduct': '4',
-        'nameProduct': "Product 1",
+        'nameProduct': "Product 4",
         'infoProduct': "Info for Items 4",
         'pricesProduct': "17.56",
         'state': True
