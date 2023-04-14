@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
+from .models import Project
 
 projectItem = [
     {
@@ -36,18 +37,14 @@ projectItem = [
 
 
 def projects(request):
-    name = 'Duy Luan'
-    age = 23
-
-    context = {'projects': projectItem}
+    projects = Project.objects.all()
+    context = {'projects': projects}
     return render(request, 'websites/projects.html', context)
 
 
 def pageTwo(request, pk):
-    projectObject = None
-
-    for i in projectItem:
-        if i['idProduct'] == str(pk):
-            projectObject = i
-
-    return render(request, 'websites/single-project.html', {'project': projectObject})
+    projectObj = Project.objects.get(id=pk)
+    tags = projectObj.tags.all()
+    reviews = projectObj.review_set.all()
+    context = {'project': projectObj, 'tags': tags, 'reviews': reviews}
+    return render(request, 'websites/single-project.html', context)

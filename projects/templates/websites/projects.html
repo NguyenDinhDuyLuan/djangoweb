@@ -22,9 +22,8 @@
     <tbody>
         {% for item in projects %}
         <tr>
-            <td>{{item.idProduct}}</td>
-            <td>{{item.nameProduct}}</td>
-            <td>{{item.infoProduct}}</td>
+            <td><a href="{% url 'project' item.id %}">{{item.title}}</a></td>
+            <td>{{item.description}}</td>
             <td>{{item.pricesProduct}}</td>
             <td>{% if item.state %} <strong>Có hàng</strong>{% endif %}</td>
         </tr>
