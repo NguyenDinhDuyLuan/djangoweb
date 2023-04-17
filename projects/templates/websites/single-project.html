@@ -1,20 +1,17 @@
-{% extends 'main.html' %}
-
-{% block content %}
+{% extends 'main.html' %} {% block content %}
 <h1>{{project.title}}</h1>
 {% for tag in tags %}
-    <span style="border: 1px solid black; padding: 10px 20px;">{{tag}}</span>
+<span style="border: 1px solid black; padding: 10px 20px">{{tag}}</span>
 {% endfor %}
-<br>
-<br>
-<hr>
-<p>
-{{project.description}}
-</p>
+<br />
+<br />
+<hr />
+<p>{{project.description}}</p>
 
-<hr>
+<hr />
 
 {% for review in reviews %}
-    <p>{{review.body}}</p>
-{% endfor %}
-{% endblock content %}
+<p>{{review.created}}</p>
+<p>{{review.value}}</p>
+<p>{{review.body}}</p>
+{% endfor %} {% endblock content %}
