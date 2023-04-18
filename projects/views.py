@@ -59,6 +59,33 @@ def createProject(request):
         if form.is_valid():
             form.save()
             return redirect('projects')
-        
+
     context = {'form': form}
     return render(request, 'websites/project-form.html', context)
+
+
+def updateProject(request, pk):
+    context = {}
+    project = Project.objects.get(id=pk)
+    form = ProjectForm(instance=project)
+    template = 'websites/project-form.html'
+
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, instance=project)
+        if form.is_valid():
+            form.save()
+            return redirect('projects')
+
+    context['form'] = form
+    return render(request, template, context)
+
+
+def deleteProject(request, pk):
+    project = Project.objects.get(id=pk)
+    template = 'websites/delete.html'
+
+    if request.method == 'POST':
+        project.delete()
+        return redirect('projects')
+
+    return render(request, template, {'object': project})

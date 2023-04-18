@@ -16,7 +16,7 @@
         <tr>
             <th>Name</th>
             <th>Description</th>
-            <th>Prices</th>
+            <th>Function</th>
         </tr>
     </thead>
     <tbody>
@@ -24,8 +24,8 @@
         <tr>
             <td><a href="{% url 'project' item.id %}">{{item.title}}</a></td>
             <td>{{item.description}}</td>
-            <td>{{item.pricesProduct}}</td>
-            <td>{% if item.state %} <strong>Có hàng</strong>{% endif %}</td>
+            <td><a href="{% url 'update-project' item.id %}">Edit</a></td>
+            <td><a href="{% url 'delete-project' item.id %}">Delete</a></td>
         </tr>
         {% endfor %}
     </tbody>
