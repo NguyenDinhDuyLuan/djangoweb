@@ -1,0 +1,24 @@
+body {
+  background-color: aqua;
+}
+
+h1 {
+  font-size: 40px;
+  color: red;
+}
+
+.main-project-content {
+  margin-top: 100px;
+}
+
+.adding-project-function {
+  margin-top: 100px;
+}
+
+.viewing-project-detail {
+  margin-top: 100px;
+}
+
+.delete-project-function {
+  margin-top: 100px;
+}

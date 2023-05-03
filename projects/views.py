@@ -37,12 +37,14 @@ from .form import ProjectForm
 # ]
 
 
+# Trang web chính: Hiển thịnh table project
 def projects(request):
     projects = Project.objects.all()
     context = {'projects': projects}
     return render(request, 'websites/projects.html', context)
 
 
+# Trang web thứ 2, hiển thị thông tin chi tiết của project
 def pageTwo(request, pk):
     projectObj = Project.objects.get(id=pk)
     tags = projectObj.tags.all()
@@ -51,11 +53,12 @@ def pageTwo(request, pk):
     return render(request, 'websites/single-project.html', context)
 
 
+# chức năng tạo project: cho phép người dùng tạo và nhập giá trị vô database
 def createProject(request):
     form = ProjectForm()
 
     if request.method == 'POST':
-        form = ProjectForm(request.POST)
+        form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('projects')
@@ -64,6 +67,7 @@ def createProject(request):
     return render(request, 'websites/project-form.html', context)
 
 
+# chức năng cập nhật dữ liệu, cho phép xem và thay đổi thông tin của project
 def updateProject(request, pk):
     context = {}
     project = Project.objects.get(id=pk)
@@ -71,7 +75,7 @@ def updateProject(request, pk):
     template = 'websites/project-form.html'
 
     if request.method == 'POST':
-        form = ProjectForm(request.POST, instance=project)
+        form = ProjectForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
             form.save()
             return redirect('projects')
@@ -80,6 +84,7 @@ def updateProject(request, pk):
     return render(request, template, context)
 
 
+# chức năng xóa dữ liệu, cho phép xem và xóa thông tin project
 def deleteProject(request, pk):
     project = Project.objects.get(id=pk)
     template = 'websites/delete.html'

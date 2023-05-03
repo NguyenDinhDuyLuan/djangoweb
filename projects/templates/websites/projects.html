@@ -1,9 +1,12 @@
-{% extends 'main.html' %} {% block content %}
-<h1>Projects</h1>
+{% extends 'main.html' %} {% load static %} {% block content %}
+<div class="main-project-content">
+  <img style="width: 200px" src="{% static 'img/cat-img.jpg' %}" />
 
-<h1>Name: {{name}}</h1>
+  <h1>Projects</h1>
 
-<!-- {% if age > 22 %}
+  <h1>Name: {{name}}</h1>
+
+  <!-- {% if age > 22 %}
 <h4>Older than 22</h4>
 {% elif age == 23 %}
 <h4>It 22</h4>
@@ -11,24 +14,25 @@
 <h4>Under 22</h4>
 {% endif %} -->
 
-<table>
+  <table>
     <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Function</th>
-        </tr>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Function</th>
+      </tr>
     </thead>
     <tbody>
-        {% for item in projects %}
-        <tr>
-            <td><a href="{% url 'project' item.id %}">{{item.title}}</a></td>
-            <td>{{item.description}}</td>
-            <td><a href="{% url 'update-project' item.id %}">Edit</a></td>
-            <td><a href="{% url 'delete-project' item.id %}">Delete</a></td>
-        </tr>
-        {% endfor %}
+      {% for item in projects %}
+      <tr>
+        <td><a href="{% url 'project' item.id %}">{{item.title}}</a></td>
+        <td>{{item.description}}</td>
+        <td><a href="{% url 'update-project' item.id %}">Edit</a></td>
+        <td><a href="{% url 'delete-project' item.id %}">Delete</a></td>
+      </tr>
+      {% endfor %}
     </tbody>
-</table>
+  </table>
+</div>
 
 {% endblock content %}

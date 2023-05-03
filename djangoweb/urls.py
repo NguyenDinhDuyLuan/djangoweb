@@ -17,9 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('projects.urls'))
 ]
 
 
+# Kết nối Media_url với Media_root để lấy toàn bộ hình ảnh trong thư mục img
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Kết nối static_url với static_root để lấy dữ liệu trang web
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

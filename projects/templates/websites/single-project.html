@@ -1,17 +1,23 @@
 {% extends 'main.html' %} {% block content %}
-<h1>{{project.title}}</h1>
-{% for tag in tags %}
-<span style="border: 1px solid black; padding: 10px 20px">{{tag}}</span>
-{% endfor %}
-<br />
-<br />
-<hr />
-<p>{{project.description}}</p>
 
-<hr />
+<div class="viewing-project-detail">
+  <!-- Hình ảnh của project -->
+  <img style="max-width: 300px" src="{{project.imageURL}}" />
 
-{% for review in reviews %}
-<p>{{review.created}}</p>
-<p>{{review.value}}</p>
-<p>{{review.body}}</p>
+  <h1>{{project.title}}</h1>
+  {% for tag in tags %}
+  <span style="border: 1px solid black; padding: 10px 20px">{{tag}}</span>
+  {% endfor %}
+  <br />
+  <br />
+  <hr />
+  <p>{{project.description}}</p>
+
+  <hr />
+
+  {% for review in reviews %}
+  <p>{{review.created}}</p>
+  <p>{{review.value}}</p>
+  <p>{{review.body}}</p>
+</div>
 {% endfor %} {% endblock content %}
