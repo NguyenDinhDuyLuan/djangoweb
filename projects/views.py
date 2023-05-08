@@ -77,20 +77,23 @@ def updateProject(request, pk):
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
-            form.save()
+            form.save()  # save instance
             return redirect('projects')
 
     context['form'] = form
     return render(request, template, context)
 
 
-# chức năng xóa dữ liệu, cho phép xem và xóa thông tin project
 def deleteProject(request, pk):
+    """Return a foobang
+    Optional plotz says to frobnicate the bizbaz first.
+    """
     project = Project.objects.get(id=pk)
-    template = 'websites/delete.html'
+    template = 'websites/delete.html' 
 
+    # phần code xử lý POST request
     if request.method == 'POST':
-        project.delete()
+        project.delete()  # xóa instance
         return redirect('projects')
 
     return render(request, template, {'object': project})
